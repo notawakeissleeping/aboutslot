@@ -5,7 +5,8 @@
 			<!-- 也可以写作 #header -->
 			<!-- <h2>Available Badges</h2> -->
 			<template v-slot:header>hello,这一个方框是badgelist </template>
-			<!-- 如果在插槽中没有对应的元素就会使用定义的默认值 -->
+			<!-- 如果在插槽中
+				没有对应的元素就会使用定义的默认值 -->
 			<!-- </template> -->
 			<template v-slot:default>
 				<!-- 第一个框里的两个直边圆角方框按钮 -->
