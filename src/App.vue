@@ -1,47 +1,55 @@
 <template>
-	<div>
-		<!-- Vue会自动将TheHeader翻译成带破折号的样式 <the-header></the-header> -->
-		<!-- 在vue中，两种风格的作用都是相同的，可以任意选择一种 <TheHeader /> -->
-		<TheHeader />
-		<badge-list></badge-list>
-		<user-info
-			:full-name="activeUser.name"
-			:info-text="activeUser.description"
-			:role="activeUser.role"
-		></user-info>
-	</div>
+  <div>
+    <!-- Vue会自动将TheHeader翻译成带破折号的样式 <the-header></the-header> -->
+    <!-- 在vue中，两种风格的作用都是相同的，可以任意选择一种 <TheHeader /> -->
+    <TheHeader />
+    <badge-list></badge-list>
+    <user-info
+      :full-name="activeUser.name"
+      :info-text="activeUser.description"
+      :role="activeUser.role"
+    ></user-info>
+    <course-goals>
+      <template #default="slotProps">
+        <h2>{{ slotProps.item }}</h2>
+        <p>{{ slotProps["anotherprop"] }}</p>
+      </template>
+    </course-goals>
+  </div>
 </template>
 
 <script>
 import TheHeader from "./components/TheHeader.vue";
 import BadgeList from "./components/BadgeList.vue";
 import UserInfo from "./components/UserInfo.vue";
+import CourseGoals from "./components/CourseGoals.vue";
 export default {
-	components: {
-		//"the-header": TheHeader,
-		//TheHeader,也可以这样写，和下面相同
-		TheHeader: TheHeader, //注意是在这种写法的情况下，才有两种应用组件的写法
-		BadgeList,
-		UserInfo
-	}, //在这个component里注册的组件，只能在这个文件中使用
-	data() {
-		return {
-			activeUser: {
-				name: "Maximilian Schwarzmüller",
-				description: "Site owner and admin",
-				role: "admin"
-			}
-		};
-	}
+  components: {
+    //"the-header": TheHeader,
+    //TheHeader,也可以这样写，和下面相同
+    TheHeader: TheHeader, //注意是在这种写法的情况下，才有两种应用组件的写法
+    BadgeList,
+    UserInfo,
+    CourseGoals,
+  }, //在这个component里注册的组件，只能在这个文件中使用
+  data() {
+    return {
+      activeUser: {
+        name: "Maximilian Schwarzmüller",
+        description: "Site owner and admin",
+        role: "admin",
+      },
+    };
+  },
 };
 </script>
 
 <style>
 html {
-	font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 body {
-	margin: 0;
+  margin: 0;
 }
 </style>
